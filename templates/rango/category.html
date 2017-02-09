@@ -22,8 +22,10 @@
         {% endif %}
 
 {% if category %}
-	<div>Add a Page to the Category:</div>
-	<a href="/rango/category/{{category.slug}}/add_page/">Add Page</a></br>
+    {% if user.is_authenticated %}
+	      <div>Add a Page to the Category:</div>
+	    <a href="/rango/category/{{category.slug}}/add_page/">Add Page</a></br>
+    {% endif %}
 {% else %}
 The specified category does not exist!
 {% endif %}
