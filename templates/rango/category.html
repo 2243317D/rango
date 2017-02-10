@@ -24,7 +24,7 @@
 {% if category %}
     {% if user.is_authenticated %}
 	      <div>Add a Page to the Category:</div>
-	    <a href="/rango/category/{{category.slug}}/add_page/">Add Page</a></br>
+	    <a href="{% url 'add_page' category.slug %}">Add Page</a></br>
     {% endif %}
 {% else %}
 The specified category does not exist!
