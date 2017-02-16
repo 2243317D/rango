@@ -19,6 +19,7 @@ def get_server_side_cookie(request, cookie, default_val=None):
     return val
 
 def visitor_cookie_handler(request):
+
     visits = int(get_server_side_cookie(request, 'visits', '1'))
     last_visit_cookie = get_server_side_cookie(request, 'last_visit', str(datetime.now()))
     last_visit_time = datetime.strptime(last_visit_cookie[:-7], '%Y-%m-%d %H:%M:%S')
@@ -56,13 +57,17 @@ def index(request):
 
 def about(request):
 
+    context_dict={}
     if request.session.test_cookie_worked():
         print("TEST COOKIE WORKED!")
         request.session.delete_test_cookie()
 
-    context_dict = {'boldmessage': "This tutorial has been put together by Sean Davies"}
+    request.session.set_test_cookie()
+    visitor_cookie_handler(request)
 
-    return render(request, 'rango/about.html', {})
+    context_dict['visits'] = request.session['visits']
+
+    return render(request, 'rango/about.html', context=context_dict)
 
 def show_category(request, category_name_slug):
 
