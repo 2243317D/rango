@@ -5,8 +5,10 @@
 {% endblock %}
 	
 {% block body_block %}
+
 	<div>
-	{% if category %}
+
+	    {% if category %}
 	
 	<h1>Add a Page to {{category.name}}</h1>
 
@@ -26,9 +28,9 @@
 		<input type="submit" name="submit" value="Add Page" />
 	</form>
 	
-	{% else %}
-		The specified category does not exist!
-	{% endif%}
+	    {% else %}
+		    The specified category does not exist!
+	    {% endif%}
 	  
 	  
 	  
