@@ -30,7 +30,7 @@ LOGIN_URL='/rango/login/'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = '=c-*^y#1o07qmho4-ltq*!0pp+3d4omww%6iklwha%-*2oqu31'
+
 SECRET_KEY = 'y=27&u2o)l%fmm1#h+hee*-k*9%1h+_b+w2=c1sbxngoof5vt2'
 
 
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-STATICFILES_DIRS = [STATIC_DIR, ]
+
 
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
@@ -97,6 +98,11 @@ DATABASES = {
     }
 }
 
+
+PASSWORD_HASHERS = [
+                    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+                    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+                    ]
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -117,9 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-PASSWORD_HASHERS = ('django.contrib.auth.hashers.PBKDF2PasswordHasher',
-                    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-                    )
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -137,6 +140,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+STATICFILES_DIRS = [STATIC_DIR, ]
 
 STATIC_URL = '/static/'
 
